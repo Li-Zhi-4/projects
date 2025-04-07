@@ -11,14 +11,12 @@ class TicTacToe:
             "O": 0
         }
 
-
     def print_board(self):
         """Prints the current state of the tic-tac-toe board."""
         print(f"   1  2  3 \n" +
               f"A [{self.__board["A1"]}][{self.__board["A2"]}][{self.__board["A3"]}]\n" +
               f"B [{self.__board["B1"]}][{self.__board["B2"]}][{self.__board["B3"]}]\n" +
               f"C [{self.__board["C1"]}][{self.__board["C2"]}][{self.__board["C3"]}]")
-
 
     def take_turn(self, player):
         """User takes a turn and updates tic-tac-toe board."""
@@ -29,7 +27,6 @@ class TicTacToe:
         else:
             print(f"Error: {turn} is not a valid move.")
             return False
-
 
     def check_board(self):
         """Checks every winning combination and updates scoreboard when appropriate."""
@@ -56,9 +53,7 @@ class TicTacToe:
             self.__scoreboard["O"] += 1
             print("Player O wins!")
             return 0
-        
         return 1
-
 
     def reset_board(self):
         """Resets the tic-tac-toe board."""
@@ -70,7 +65,6 @@ class TicTacToe:
         print(f"\nScoreboard:\n" \
         f"Player X Wins: {self.__scoreboard["X"]}\n" \
         f"Player O Wins: {self.__scoreboard["O"]}\n")
-
 
     def play_game(self):
         """Plays a game of tic-tac-toe to completion."""
@@ -90,7 +84,6 @@ class TicTacToe:
         
         print("Game Over!")
         self.reset_board()
-
     
     def print_options(self):
         """Prints the options for-tic-tac toe."""
@@ -99,7 +92,6 @@ class TicTacToe:
             "(2) Display scoreboard.\n" \
             "(3) Display options.\n" \
             "(4) Exit.\n")
-
     
     def tic_tac_toe(self):
         """Sets up Tic Tac Toe."""
@@ -119,7 +111,6 @@ class TicTacToe:
                     break
                 case _:
                     print(f"Error: {choice} is not one of the options.")
-
 
 if __name__ == "__main__":
     game = TicTacToe()
