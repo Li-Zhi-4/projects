@@ -83,7 +83,7 @@ function playRound(playerSelection, computerSelection) {
                 return [-1, "You lose! Scissors beats Paper."]
             }
     }
-}
+} 
 
 /**
  * Returns the results of five games of rock paper scissors.
@@ -93,28 +93,39 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;        // Set initial player score
     let computerScore = 0;      // Set initial computer score
+    let playerSelection;
+    let gamePoints;
+    let gameMessage;
 
-    for (i = 0; i < 5; i++) {
-        const playerSelection = String(window.prompt("Enter rock paper scissors choice:"));     // Prompt user for choice
-        const computerSelection = getComputerChoice();                                          // Acquire computer choice
+    //const playerSelection = String(window.prompt("Enter rock paper scissors choice:"));     // Prompt user for choice
+    const rockButton = document.querySelector(".rock");
+    const paperButton = document.querySelector(".paper");
+    const scissorsButton = document.querySelector(".scissors");
 
-        const [gamePoints, gameMessage] = playRound(playerSelection, computerSelection);
-        console.log(gameMessage);   // Print round specific results
+    function round(playerSelection) {
+        const computerSelection = getComputerChoice(); 
+        [gamePoints, gameMessage] = playRound(playerSelection, computerSelection);
+        console.log(gameMessage)
 
         if (gamePoints == 1) {      // Tally score for round
             playerScore += 1;
         } else if (gamePoints == -1) {
             computerScore += 1;
         }
+    
+        if (playerScore > computerScore) {          // Print game results
+            console.log("Player wins round!");
+        } else if (playerScore < computerScore) {
+            console.log("Computer wins round!");
+        } else {
+            console.log("Player and Computer tie!");
+        }
     }
 
-    if (playerScore > computerScore) {          // Print game results
-        return "Player wins best out of five rounds!"
-    } else if (playerScore < computerScore) {
-        return "Computer wins best out of five rounds!"
-    } else {
-        return "Player and Computer tie!"
-    }
+    rockButton.addEventListener("click", () => round("rock"));
+    paperButton.addEventListener("click", () => round("paper"));
+    scissorsButton.addEventListener("click", () => round("scissors"));
+
 }
 
-console.log(game());
+game();
